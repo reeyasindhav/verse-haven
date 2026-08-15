@@ -1,4 +1,3 @@
-<<
 import { Link } from "@tanstack/react-router";
 import { Bookmark, Headphones, Play } from "lucide-react";
 import { getPoet, type Poem } from "@/lib/data";
