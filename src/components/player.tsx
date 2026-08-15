@@ -1,4 +1,3 @@
-<<<<<<<
 import { createContext, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { Pause, Play, SkipBack, SkipForward, Volume2, X } from "lucide-react";
 import { Link } from "@tanstack/react-router";
