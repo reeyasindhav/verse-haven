@@ -286,7 +286,15 @@ function Dashboard() {
           <div className="animate-rise rounded-lg border border-border bg-card p-6">
             <div className="flex items-center justify-between">
               <h2 className="font-display text-2xl">Drafts</h2>
-              <PenLine className="size-4 text-muted-foreground" />
+              <div className="flex items-center gap-2">
+                <Link to="/dashboard/write">
+                  <Button size="sm" variant="ghost" className="gap-1">
+                    <PenLine className="size-4" />
+                    Write
+                  </Button>
+                </Link>
+                <PenLine className="size-4 text-muted-foreground" />
+              </div>
             </div>
             <ul className="mt-5 space-y-4">
               {drafts.length === 0 && (

@@ -20,6 +20,7 @@ const nav = [
   { to: "/listen", label: "Listen" },
   { to: "/poets", label: "Poets" },
   { to: "/collections", label: "Collections" },
+  { to: "/about", label: "About" },
 ];
 
 export function SiteHeader() {
