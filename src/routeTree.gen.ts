@@ -11,8 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CollectionsRouteImport } from './routes/collections'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ExploreRouteImport } from './routes/explore'
 import { Route as ListenRouteImport } from './routes/listen'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as SignupRouteImport } from './routes/signup'
 import { Route as MoodsIndexRouteImport } from './routes/moods/index'
 import { Route as MoodsMoodRouteImport } from './routes/moods/$mood'
 import { Route as PoemIdRouteImport } from './routes/poem/$id'
@@ -29,6 +32,11 @@ const CollectionsRoute = CollectionsRouteImport.update({
   path: '/collections',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ExploreRoute = ExploreRouteImport.update({
   id: '/explore',
   path: '/explore',
@@ -37,6 +45,16 @@ const ExploreRoute = ExploreRouteImport.update({
 const ListenRoute = ListenRouteImport.update({
   id: '/listen',
   path: '/listen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MoodsIndexRoute = MoodsIndexRouteImport.update({
@@ -68,8 +86,11 @@ const PoetsSlugRoute = PoetsSlugRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/collections': typeof CollectionsRoute
+  '/dashboard': typeof DashboardRoute
   '/explore': typeof ExploreRoute
   '/listen': typeof ListenRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
   '/moods/$mood': typeof MoodsMoodRoute
   '/poem/$id': typeof PoemIdRoute
   '/poets/$slug': typeof PoetsSlugRoute
@@ -79,8 +100,11 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/collections': typeof CollectionsRoute
+  '/dashboard': typeof DashboardRoute
   '/explore': typeof ExploreRoute
   '/listen': typeof ListenRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
   '/moods/$mood': typeof MoodsMoodRoute
   '/poem/$id': typeof PoemIdRoute
   '/poets/$slug': typeof PoetsSlugRoute
@@ -91,8 +115,11 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/collections': typeof CollectionsRoute
+  '/dashboard': typeof DashboardRoute
   '/explore': typeof ExploreRoute
   '/listen': typeof ListenRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
   '/moods/$mood': typeof MoodsMoodRoute
   '/poem/$id': typeof PoemIdRoute
   '/poets/$slug': typeof PoetsSlugRoute
@@ -104,8 +131,11 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/collections'
+    | '/dashboard'
     | '/explore'
     | '/listen'
+    | '/login'
+    | '/signup'
     | '/moods/$mood'
     | '/poem/$id'
     | '/poets/$slug'
@@ -115,8 +145,11 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/collections'
+    | '/dashboard'
     | '/explore'
     | '/listen'
+    | '/login'
+    | '/signup'
     | '/moods/$mood'
     | '/poem/$id'
     | '/poets/$slug'
@@ -126,8 +159,11 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/collections'
+    | '/dashboard'
     | '/explore'
     | '/listen'
+    | '/login'
+    | '/signup'
     | '/moods/$mood'
     | '/poem/$id'
     | '/poets/$slug'
@@ -138,8 +174,11 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CollectionsRoute: typeof CollectionsRoute
+  DashboardRoute: typeof DashboardRoute
   ExploreRoute: typeof ExploreRoute
   ListenRoute: typeof ListenRoute
+  LoginRoute: typeof LoginRoute
+  SignupRoute: typeof SignupRoute
   MoodsMoodRoute: typeof MoodsMoodRoute
   PoemIdRoute: typeof PoemIdRoute
   PoetsSlugRoute: typeof PoetsSlugRoute
@@ -163,6 +202,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CollectionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/explore': {
       id: '/explore'
       path: '/explore'
@@ -175,6 +221,20 @@ declare module '@tanstack/react-router' {
       path: '/listen'
       fullPath: '/listen'
       preLoaderRoute: typeof ListenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/moods/': {
@@ -218,8 +278,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CollectionsRoute: CollectionsRoute,
+  DashboardRoute: DashboardRoute,
   ExploreRoute: ExploreRoute,
   ListenRoute: ListenRoute,
+  LoginRoute: LoginRoute,
+  SignupRoute: SignupRoute,
   MoodsMoodRoute: MoodsMoodRoute,
   PoemIdRoute: PoemIdRoute,
   PoetsSlugRoute: PoetsSlugRoute,
