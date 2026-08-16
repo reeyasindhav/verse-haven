@@ -24,6 +24,7 @@ type Store = {
   user: User | null;
   signIn: (email: string, name?: string, moods?: string[]) => void;
   signOut: () => void;
+  updateUserName: (name: string) => void;
   saved: string[];
   isSaved: (id: string) => boolean;
   toggleSave: (id: string) => boolean;
@@ -96,6 +97,11 @@ export function StoreProvider({ children }: { children: ReactNode }) {
           },
         })),
       signOut: () => setState((s) => ({ ...s, user: null })),
+      updateUserName: (name) =>
+        setState((s) => ({
+          ...s,
+          user: s.user ? { ...s.user, name } : null,
+        })),
       saved: state.saved,
       isSaved: (id) => state.saved.includes(id),
       toggleSave: (id) => {

@@ -355,21 +355,21 @@ export const collections = [
     title: "Night Shift",
     count: 12,
     curator: "Versify Editors",
-    cover: cassetteCover,
+    cover: "/images/collections/night-shift.jpg",
   },
   {
     id: "mother-tongues",
     title: "Mother Tongues",
     count: 9,
     curator: "Mira Sen",
-    cover: cassetteCover,
+    cover: "/images/collections/mother-tongues.jpg",
   },
   {
     id: "stage-voice",
     title: "Stage Voice",
     count: 15,
     curator: "Ifé Adeyemi",
-    cover: cassetteCover,
+    cover: "/images/collections/stage-voice.jpg",
   },
 ];
 

@@ -1,6 +1,8 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { Page } from "@/components/page";
+import { useAuth } from "@/lib/auth";
+import { useStore } from "@/lib/store";
 
 export const Route = createFileRoute("/login")({
   head: () => ({
@@ -19,6 +21,8 @@ export const Route = createFileRoute("/login")({
 
 function Login() {
   const navigate = useNavigate();
+  const { login } = useAuth();
+  const { signIn } = useStore();
   const [email, setEmail] = useState("");
 
   return (
@@ -36,6 +40,8 @@ function Login() {
         <form
           onSubmit={(e) => {
             e.preventDefault();
+            login();
+            signIn(email);
             navigate({ to: "/dashboard" });
           }}
           className="animate-rise rounded-lg border border-border bg-card p-8"
