@@ -10,33 +10,180 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CollectionsRouteImport } from './routes/collections'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as ExploreRouteImport } from './routes/explore'
+import { Route as ListenRouteImport } from './routes/listen'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as MoodsIndexRouteImport } from './routes/moods/index'
+import { Route as MoodsMoodRouteImport } from './routes/moods/$mood'
+import { Route as PoemIdRouteImport } from './routes/poem/$id'
+import { Route as PoetsIndexRouteImport } from './routes/poets/index'
+import { Route as PoetsSlugRouteImport } from './routes/poets/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CollectionsRoute = CollectionsRouteImport.update({
+  id: '/collections',
+  path: '/collections',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExploreRoute = ExploreRouteImport.update({
+  id: '/explore',
+  path: '/explore',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ListenRoute = ListenRouteImport.update({
+  id: '/listen',
+  path: '/listen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoodsIndexRoute = MoodsIndexRouteImport.update({
+  id: '/moods/',
+  path: '/moods/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoodsMoodRoute = MoodsMoodRouteImport.update({
+  id: '/moods/$mood',
+  path: '/moods/$mood',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoemIdRoute = PoemIdRouteImport.update({
+  id: '/poem/$id',
+  path: '/poem/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoetsIndexRoute = PoetsIndexRouteImport.update({
+  id: '/poets/',
+  path: '/poets/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoetsSlugRoute = PoetsSlugRouteImport.update({
+  id: '/poets/$slug',
+  path: '/poets/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/collections': typeof CollectionsRoute
+  '/dashboard': typeof DashboardRoute
+  '/explore': typeof ExploreRoute
+  '/listen': typeof ListenRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
+  '/moods/$mood': typeof MoodsMoodRoute
+  '/poem/$id': typeof PoemIdRoute
+  '/poets/$slug': typeof PoetsSlugRoute
+  '/moods/': typeof MoodsIndexRoute
+  '/poets/': typeof PoetsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/collections': typeof CollectionsRoute
+  '/dashboard': typeof DashboardRoute
+  '/explore': typeof ExploreRoute
+  '/listen': typeof ListenRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
+  '/moods/$mood': typeof MoodsMoodRoute
+  '/poem/$id': typeof PoemIdRoute
+  '/poets/$slug': typeof PoetsSlugRoute
+  '/moods': typeof MoodsIndexRoute
+  '/poets': typeof PoetsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/collections': typeof CollectionsRoute
+  '/dashboard': typeof DashboardRoute
+  '/explore': typeof ExploreRoute
+  '/listen': typeof ListenRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
+  '/moods/$mood': typeof MoodsMoodRoute
+  '/poem/$id': typeof PoemIdRoute
+  '/poets/$slug': typeof PoetsSlugRoute
+  '/moods/': typeof MoodsIndexRoute
+  '/poets/': typeof PoetsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/collections'
+    | '/dashboard'
+    | '/explore'
+    | '/listen'
+    | '/login'
+    | '/signup'
+    | '/moods/$mood'
+    | '/poem/$id'
+    | '/poets/$slug'
+    | '/moods/'
+    | '/poets/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/collections'
+    | '/dashboard'
+    | '/explore'
+    | '/listen'
+    | '/login'
+    | '/signup'
+    | '/moods/$mood'
+    | '/poem/$id'
+    | '/poets/$slug'
+    | '/moods'
+    | '/poets'
+  id:
+    | '__root__'
+    | '/'
+    | '/collections'
+    | '/dashboard'
+    | '/explore'
+    | '/listen'
+    | '/login'
+    | '/signup'
+    | '/moods/$mood'
+    | '/poem/$id'
+    | '/poets/$slug'
+    | '/moods/'
+    | '/poets/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CollectionsRoute: typeof CollectionsRoute
+  DashboardRoute: typeof DashboardRoute
+  ExploreRoute: typeof ExploreRoute
+  ListenRoute: typeof ListenRoute
+  LoginRoute: typeof LoginRoute
+  SignupRoute: typeof SignupRoute
+  MoodsMoodRoute: typeof MoodsMoodRoute
+  PoemIdRoute: typeof PoemIdRoute
+  PoetsSlugRoute: typeof PoetsSlugRoute
+  MoodsIndexRoute: typeof MoodsIndexRoute
+  PoetsIndexRoute: typeof PoetsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +195,99 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/collections': {
+      id: '/collections'
+      path: '/collections'
+      fullPath: '/collections'
+      preLoaderRoute: typeof CollectionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/explore': {
+      id: '/explore'
+      path: '/explore'
+      fullPath: '/explore'
+      preLoaderRoute: typeof ExploreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/listen': {
+      id: '/listen'
+      path: '/listen'
+      fullPath: '/listen'
+      preLoaderRoute: typeof ListenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/moods/': {
+      id: '/moods/'
+      path: '/moods'
+      fullPath: '/moods/'
+      preLoaderRoute: typeof MoodsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/moods/$mood': {
+      id: '/moods/$mood'
+      path: '/moods/$mood'
+      fullPath: '/moods/$mood'
+      preLoaderRoute: typeof MoodsMoodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/poem/$id': {
+      id: '/poem/$id'
+      path: '/poem/$id'
+      fullPath: '/poem/$id'
+      preLoaderRoute: typeof PoemIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/poets/': {
+      id: '/poets/'
+      path: '/poets'
+      fullPath: '/poets/'
+      preLoaderRoute: typeof PoetsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/poets/$slug': {
+      id: '/poets/$slug'
+      path: '/poets/$slug'
+      fullPath: '/poets/$slug'
+      preLoaderRoute: typeof PoetsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CollectionsRoute: CollectionsRoute,
+  DashboardRoute: DashboardRoute,
+  ExploreRoute: ExploreRoute,
+  ListenRoute: ListenRoute,
+  LoginRoute: LoginRoute,
+  SignupRoute: SignupRoute,
+  MoodsMoodRoute: MoodsMoodRoute,
+  PoemIdRoute: PoemIdRoute,
+  PoetsSlugRoute: PoetsSlugRoute,
+  MoodsIndexRoute: MoodsIndexRoute,
+  PoetsIndexRoute: PoetsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
