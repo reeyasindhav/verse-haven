@@ -1,3 +1,19 @@
+import amaraAvatar from "@/assets/poets/amara.jpg";
+import ifeAvatar from "@/assets/poets/ife.jpg";
+import noorAvatar from "@/assets/poets/noor.jpg";
+import eliasAvatar from "@/assets/poets/elias.jpg";
+import miraAvatar from "@/assets/poets/mira.jpg";
+import tomasAvatar from "@/assets/poets/tomas.jpg";
+import harbourCover from "@/assets/covers/harbour.jpg";
+import stageCover from "@/assets/covers/stage.jpg";
+import marginsCover from "@/assets/covers/margins.jpg";
+import cityNightCover from "@/assets/covers/city-night.jpg";
+import monsoonCover from "@/assets/covers/monsoon.jpg";
+import cassetteCover from "@/assets/covers/cassette.jpg";
+import nightShiftCover from "@/assets/collections/night-shift.jpg";
+import motherTonguesCover from "@/assets/collections/mother-tongues.jpg";
+import stageVoiceCover from "@/assets/collections/stage-voice.jpg";
+
 export type Mood =
   | "Longing"
   | "Rage"
@@ -38,10 +54,8 @@ export const poets: Poet[] = [
     name: "Amara Quill",
     handle: "@amaraquill",
     city: "Lisbon, PT",
-    avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=70",
-    cover:
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1600&q=70",
+    avatar: amaraAvatar,
+    cover: harbourCover,
     bio: "Writes at the hour when the harbour lights argue with the dark. Two collections, one long silence.",
     followers: "12.4k",
     poems: 48,
@@ -52,10 +66,8 @@ export const poets: Poet[] = [
     name: "Ifé Adeyemi",
     handle: "@ifespeaks",
     city: "Lagos, NG",
-    avatar:
-      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=400&q=70",
-    cover:
-      "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1600&q=70",
+    avatar: ifeAvatar,
+    cover: stageCover,
     bio: "Stage-first poet. Believes a line is only finished once it has been said out loud to strangers.",
     followers: "31.7k",
     poems: 62,
@@ -66,10 +78,8 @@ export const poets: Poet[] = [
     name: "Noor Hassan",
     handle: "@noorinmargins",
     city: "Amman, JO",
-    avatar:
-      "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=70",
-    cover:
-      "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?auto=format&fit=crop&w=1600&q=70",
+    avatar: noorAvatar,
+    cover: marginsCover,
     bio: "Ghazal, fragment, footnote. Keeps every draft in the margins of borrowed books.",
     followers: "8.9k",
     poems: 27,
@@ -80,10 +90,8 @@ export const poets: Poet[] = [
     name: "Elias Brand",
     handle: "@eliasbrand",
     city: "Chicago, US",
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=70",
-    cover:
-      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=70",
+    avatar: eliasAvatar,
+    cover: cityNightCover,
     bio: "Sonnets for people who hate sonnets. Slam finalist, reluctantly.",
     followers: "19.2k",
     poems: 71,
@@ -94,10 +102,8 @@ export const poets: Poet[] = [
     name: "Mira Sen",
     handle: "@mirasen",
     city: "Kolkata, IN",
-    avatar:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=70",
-    cover:
-      "https://images.unsplash.com/photo-1508233620467-f79f1e317a05?auto=format&fit=crop&w=1600&q=70",
+    avatar: miraAvatar,
+    cover: monsoonCover,
     bio: "Monsoon archivist. Writes in two languages and translates neither faithfully.",
     followers: "22.1k",
     poems: 39,
@@ -108,10 +114,8 @@ export const poets: Poet[] = [
     name: "Tomás Vidal",
     handle: "@tvidal",
     city: "Mexico City, MX",
-    avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=70",
-    cover:
-      "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&w=1600&q=70",
+    avatar: tomasAvatar,
+    cover: cassetteCover,
     bio: "Records his poems on a cassette deck inherited from his father. Hiss included, on purpose.",
     followers: "6.3k",
     poems: 18,
@@ -351,24 +355,21 @@ export const collections = [
     title: "Night Shift",
     count: 12,
     curator: "Versify Editors",
-    cover:
-      "https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?auto=format&fit=crop&w=900&q=70",
+    cover: cassetteCover,
   },
   {
     id: "mother-tongues",
     title: "Mother Tongues",
     count: 9,
     curator: "Mira Sen",
-    cover:
-      "https://images.unsplash.com/photo-1474932430478-1b0f2fa3d33e?auto=format&fit=crop&w=900&q=70",
+    cover: cassetteCover,
   },
   {
     id: "stage-voice",
     title: "Stage Voice",
     count: 15,
     curator: "Ifé Adeyemi",
-    cover:
-      "https://images.unsplash.com/photo-1499364615646-ec38552f4f34?auto=format&fit=crop&w=900&q=70",
+    cover: cassetteCover,
   },
 ];
 
