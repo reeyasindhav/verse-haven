@@ -14,6 +14,17 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -45,6 +56,7 @@ function Dashboard() {
   const [editingName, setEditingName] = useState(false);
   const [nameValue, setNameValue] = useState(user.name);
   const [newDraftOpen, setNewDraftOpen] = useState(false);
+  const [logoutOpen, setLogoutOpen] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [newMood, setNewMood] = useState("");
   const [newBody, setNewBody] = useState("");
@@ -183,16 +195,35 @@ function Dashboard() {
                 </DialogFooter>
               </DialogContent>
             </Dialog>
-            <button
-              onClick={() => {
-                signOut();
-                logout();
-              }}
-              className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm transition-colors hover:border-accent hover:text-accent"
-            >
-              <LogOut className="size-4" />
-              Log out
-            </button>
+            <AlertDialog open={logoutOpen} onOpenChange={setLogoutOpen}>
+              <AlertDialogTrigger asChild>
+                <button
+                  className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm transition-colors hover:border-accent hover:text-accent"
+                >
+                  <LogOut className="size-4" />
+                  Log out
+                </button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Log out of your account?</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    You can always sign back in. Your drafts and saved poems will be here when you return.
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction
+                    onClick={() => {
+                      signOut();
+                      logout();
+                    }}
+                  >
+                    Log out
+                  </AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
           </div>
         </div>
 

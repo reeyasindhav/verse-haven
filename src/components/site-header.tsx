@@ -2,6 +2,17 @@ import { Link } from "@tanstack/react-router";
 import { Menu, Search, X, User, LogOut } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/lib/auth";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 const nav = [
   { to: "/explore", label: "Explore" },
@@ -13,6 +24,7 @@ const nav = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [logoutOpen, setLogoutOpen] = useState(false);
   const { loggedIn, logout } = useAuth();
 
   return (
@@ -53,13 +65,34 @@ export function SiteHeader() {
               >
                 <User className="size-5" />
               </Link>
-              <button
-                onClick={logout}
-                className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
-                aria-label="Log out"
-              >
-                <LogOut className="size-5" />
-              </button>
+              <AlertDialog open={logoutOpen} onOpenChange={setLogoutOpen}>
+                <AlertDialogTrigger asChild>
+                  <button
+                    className="rounded-full p-2 text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                    aria-label="Log out"
+                  >
+                    <LogOut className="size-5" />
+                  </button>
+                </AlertDialogTrigger>
+                <AlertDialogContent>
+                  <AlertDialogHeader>
+                    <AlertDialogTitle>Log out of your account?</AlertDialogTitle>
+                    <AlertDialogDescription>
+                      You can always sign back in. Your drafts and saved poems will be here when you return.
+                    </AlertDialogDescription>
+                  </AlertDialogHeader>
+                  <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction
+                      onClick={() => {
+                        logout();
+                      }}
+                    >
+                      Log out
+                    </AlertDialogAction>
+                  </AlertDialogFooter>
+                </AlertDialogContent>
+              </AlertDialog>
             </>
           ) : (
             <Link
