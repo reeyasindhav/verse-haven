@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { Bookmark, Headphones, Play } from "lucide-react";
+import { Bookmark, Headphones, Pause, Play } from "lucide-react";
+import { toast } from "sonner";
 import { getPoet, type Poem } from "@/lib/data";
 import { usePlayer, Waveform } from "@/components/player";
+import { useStore } from "@/lib/store";
 
 export function MoodTag({ mood }: { mood: string }) {
   return (
@@ -17,7 +19,10 @@ export function MoodTag({ mood }: { mood: string }) {
 
 export function PoemCard({ poem, index = 0 }: { poem: Poem; index?: number }) {
   const poet = getPoet(poem.poet);
-  const { play } = usePlayer();
+  const { play, current, playing, progress } = usePlayer();
+  const { isSaved, toggleSave } = useStore();
+  const isCurrent = current?.id === poem.id;
+  const saved = isSaved(poem.id);
 
   return (
     <article
@@ -39,12 +44,18 @@ export function PoemCard({ poem, index = 0 }: { poem: Poem; index?: number }) {
       {poem.audio && (
         <button
           onClick={() => play(poem)}
+          aria-label={isCurrent && playing ? `Pause ${poem.title}` : `Play ${poem.title}`}
           className="mt-5 flex w-full items-center gap-3 rounded-md border border-border/70 bg-secondary/50 px-3 py-2 text-left transition-colors hover:border-accent/50"
         >
           <span className="grid size-8 shrink-0 place-items-center rounded-full bg-primary text-primary-foreground">
-            <Play className="size-3" />
+            {isCurrent && playing ? <Pause className="size-3" /> : <Play className="size-3" />}
           </span>
-          <Waveform bars={poem.audio.waveform.slice(0, 28)} className="h-6 flex-1" />
+          <Waveform
+            bars={poem.audio.waveform.slice(0, 28)}
+            progress={isCurrent ? progress : 0}
+            playing={isCurrent && playing}
+            className="h-6 flex-1"
+          />
           <span className="font-mono text-[11px] text-muted-foreground">
             {poem.audio.duration}
           </span>
@@ -67,7 +78,17 @@ export function PoemCard({ poem, index = 0 }: { poem: Poem; index?: number }) {
               <Headphones className="size-3" /> {poem.listens}
             </span>
           )}
-          <Bookmark className="size-3.5 transition-colors hover:text-accent" />
+          <button
+            onClick={() => {
+              const added = toggleSave(poem.id);
+              toast(added ? "Saved to your shelf" : "Removed from your shelf");
+            }}
+            aria-label={saved ? "Remove from saved" : "Save poem"}
+            aria-pressed={saved}
+            className={`transition-colors hover:text-accent ${saved ? "text-accent" : ""}`}
+          >
+            <Bookmark className={`size-3.5 ${saved ? "fill-current" : ""}`} />
+          </button>
         </span>
       </div>
     </article>
