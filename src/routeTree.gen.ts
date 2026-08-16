@@ -10,33 +10,73 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ExploreRouteImport } from './routes/explore'
+import { Route as ListenRouteImport } from './routes/listen'
+import { Route as MoodsIndexRouteImport } from './routes/moods/index'
+import { Route as MoodsMoodRouteImport } from './routes/moods/$mood'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ExploreRoute = ExploreRouteImport.update({
+  id: '/explore',
+  path: '/explore',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ListenRoute = ListenRouteImport.update({
+  id: '/listen',
+  path: '/listen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoodsIndexRoute = MoodsIndexRouteImport.update({
+  id: '/moods/',
+  path: '/moods/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MoodsMoodRoute = MoodsMoodRouteImport.update({
+  id: '/moods/$mood',
+  path: '/moods/$mood',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/explore': typeof ExploreRoute
+  '/listen': typeof ListenRoute
+  '/moods/$mood': typeof MoodsMoodRoute
+  '/moods/': typeof MoodsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/explore': typeof ExploreRoute
+  '/listen': typeof ListenRoute
+  '/moods/$mood': typeof MoodsMoodRoute
+  '/moods': typeof MoodsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/explore': typeof ExploreRoute
+  '/listen': typeof ListenRoute
+  '/moods/$mood': typeof MoodsMoodRoute
+  '/moods/': typeof MoodsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/explore' | '/listen' | '/moods/$mood' | '/moods/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/explore' | '/listen' | '/moods/$mood' | '/moods'
+  id: '__root__' | '/' | '/explore' | '/listen' | '/moods/$mood' | '/moods/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ExploreRoute: typeof ExploreRoute
+  ListenRoute: typeof ListenRoute
+  MoodsMoodRoute: typeof MoodsMoodRoute
+  MoodsIndexRoute: typeof MoodsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +88,43 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/explore': {
+      id: '/explore'
+      path: '/explore'
+      fullPath: '/explore'
+      preLoaderRoute: typeof ExploreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/listen': {
+      id: '/listen'
+      path: '/listen'
+      fullPath: '/listen'
+      preLoaderRoute: typeof ListenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/moods/': {
+      id: '/moods/'
+      path: '/moods'
+      fullPath: '/moods/'
+      preLoaderRoute: typeof MoodsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/moods/$mood': {
+      id: '/moods/$mood'
+      path: '/moods/$mood'
+      fullPath: '/moods/$mood'
+      preLoaderRoute: typeof MoodsMoodRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ExploreRoute: ExploreRoute,
+  ListenRoute: ListenRoute,
+  MoodsMoodRoute: MoodsMoodRoute,
+  MoodsIndexRoute: MoodsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
